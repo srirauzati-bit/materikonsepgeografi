@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Ajar Digital Geografi Kelas X - 10 Konsep Geografi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .card-flip-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .card-flip.flipped .card-flip-inner {
+            transform: rotateY(180deg);
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+
+    <!-- Navigation Bar Header -->
+    <header class="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo & Title -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
+                    <div class="bg-amber-400 p-2 rounded-lg text-blue-950 font-bold shadow-md">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg leading-tight tracking-wide">GeoKonsep X</h1>
+                        <p class="text-xs text-blue-200">Media Ajar Geografi SMA Fase E</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Links (Desktop) -->
+                <nav class="hidden md:flex space-x-1 lg:space-x-2 text-sm font-medium">
+                    <button onclick="navigateTo('home')" id="nav-home" class="nav-btn px-3 py-2 rounded-md hover:bg-white/10 transition">Beranda</button>
+                    <button onclick="navigateTo('tujuan')" id="nav-tujuan" class="nav-btn px-3 py-2 rounded-md hover:bg-white/10 transition">Tujuan</button>
+                    <button onclick="navigateTo('materi')" id="nav-materi" class="nav-btn px-3 py-2 rounded-md hover:bg-white/10 transition">10 Konsep</button>
+                    <button onclick="navigateTo('kasus')" id="nav-kasus" class="nav-btn px-3 py-2 rounded-md hover:bg-white/10 transition">Studi Kasus</button>
+                    <button onclick="navigateTo('latihan')" id="nav-latihan" class="nav-btn px-3 py-2 rounded-md hover:bg-white/10 transition">Latihan Soal</button>
+                    <button onclick="navigateTo('refleksi')" id="nav-refleksi" class="nav-btn px-3 py-2 rounded-md hover:bg-white/10 transition">Refleksi</button>
+                </nav>
+
+                <!-- Progress Indicator -->
+                <div class="hidden lg:flex items-center space-x-2 bg-blue-950/60 px-3 py-1.5 rounded-full text-xs border border-blue-700/50">
+                    <i data-lucide="award" class="w-4 h-4 text-amber-400"></i>
+                    <span>Progres: <strong id="progress-text" class="text-amber-300">0%</strong></span>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-md hover:bg-white/10 text-white focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t border-blue-700 px-4 pt-2 pb-4 space-y-2 text-sm font-medium">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-white/10">Beranda</button>
+            <button onclick="navigateTo('tujuan'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-white/10">Tujuan Pembelajaran</button>
+            <button onclick="navigateTo('materi'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-white/10">10 Konsep Geografi</button>
+            <button onclick="navigateTo('kasus'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-white/10">Studi Kasus Nyata</button>
+            <button onclick="navigateTo('latihan'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-white/10">Latihan Soal Interaktif</button>
+            <button onclick="navigateTo('refleksi'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-white/10">Rangkuman & Refleksi</button>
+        </div>
+    </header>
+
+    <!-- Main Content Area Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- SECTION 1: HOME PAGE -->
+        <section id="section-home" class="space-y-8 animate-fade-in">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute right-1/3 -top-10 w-60 h-60 bg-emerald-500/20 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="relative z-10 max-w-2xl">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-4">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Media Ajar Digital Geografi Kelas X SMA
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
+                        Jelajahi <span class="text-amber-400">10 Konsep Esensial</span> Geografi
+                    </h1>
+                    <p class="text-blue-100 text-base sm:text-lg mb-8 leading-relaxed">
+                        Memahami Fenomena geosfer di Sekitar Kita dengan Cara Interaktif, Kontekstual, dan Menyenangkan.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="navigateTo('tujuan')" class="bg-amber-400 hover:bg-amber-300 text-blue-950 font-bold px-6 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition flex items-center gap-2 transform hover:-translate-y-0.5">
+                            <i data-lucide="compass" class="w-5 h-5"></i> Mulai Belajar Now
+                        </button>
+                        <button onclick="navigateTo('materi')" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold px-6 py-3.5 rounded-xl transition flex items-center gap-2">
+                            <i data-lucide="book-open" class="w-5 h-5"></i> Langsung ke Materi
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fast Overview Feature Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center mb-3">
+                        <i data-lucide="target" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-1">Tujuan Jelas</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Dirancang khusus untuk capaian kurikulum Geografi Fase E Kelas X.</p>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3">
+                        <i data-lucide="layers" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-1">10 Kartu Konsep</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Penjelasan ringkas, kata kunci, contoh nyata, dan diagram visual.</p>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-3">
+                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-1">Studi Kasus Nyata</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Analisis fenomena banjir, jalan raya, dan perbandingan wilayah Indonesia.</p>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center mb-3">
+                        <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-1">Evaluasi Auto-Skor</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">5 Soal variatif (PG, Menjodohkan, HOTS) dengan umpan balik langsung.</p>
+                </div>
+            </div>
+
+            <!-- Petunjuk Penggunaan -->
+            <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+                <h2 class="font-bold text-blue-900 text-base mb-3 flex items-center gap-2">
+                    <i data-lucide="info" class="w-5 h-5 text-blue-600"></i> Panduan Penggunaan Media Ajar
+                </h2>
+                <ul class="text-sm text-blue-800 space-y-2 list-disc list-inside">
+                    <li>Gunakan menu navigasi di atas atau tombol <strong>Selanjutnya / Sebelumnya</strong> di bagian bawah halaman.</li>
+                    <li>Pada bagian <strong>10 Konsep</strong>, klik setiap kartu untuk membuka contoh dan pertanyaan refleksi interaktif.</li>
+                    <li>Pada <strong>Studi Kasus</strong>, klik tombol <em>Lihat Analisis</em> untuk melihat bedah konsep Geografi terkait.</li>
+                    <li>Selesaikan seluruh 5 soal di bagian <strong>Latihan Soal</strong> untuk mendapatkan skor akhir (Target skor minimal: <strong>80</strong>).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TUJUAN PEMBELAJARAN -->
+        <section id="section-tujuan" class="hidden space-y-8 animate-fade-in">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Bagian Pertama</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Tujuan & Indikator Pembelajaran</h2>
+                <p class="text-slate-600 text-sm mt-1">Alokasi Waktu: 2 × 45 Menit | Model: Pembelajaran Kontekstual & Eksploratif</p>
+            </div>
+
+            <!-- Capaian Pembelajaran Grid -->
+            <div>
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2 text-lg">
+                    <i data-lucide="check-square" class="w-5 h-5 text-emerald-600"></i> Capaian Pembelajaran Peserta Didik
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex gap-4">
+                        <div class="bg-blue-100 text-blue-700 p-3 rounded-xl h-fit">
+                            <i data-lucide="brain" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">1. Pengertian Konsep</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">Menjelaskan pengertian konsep geografi dengan bahasa sendiri secara lugas dan rinci.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex gap-4">
+                        <div class="bg-emerald-100 text-emerald-700 p-3 rounded-xl h-fit">
+                            <i data-lucide="grid" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">2. Mengidentifikasi 10 Konsep</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">Mengidentifikasi dan menjelaskan 10 konsep esensial geografi dengan tepat.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex gap-4">
+                        <div class="bg-indigo-100 text-indigo-700 p-3 rounded-xl h-fit">
+                            <i data-lucide="git-compare" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">3. Membedakan Karakteristik</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">Membedakan karakteristik masing-masing konsep melalui contoh fenomena sehari-hari.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex gap-4">
+                        <div class="bg-amber-100 text-amber-700 p-3 rounded-xl h-fit">
+                            <i data-lucide="search" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">4. Analisis Fenomena Sekitar</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">Menganalisis fenomena geografis di lingkungan sekitar berdasarkan sudut pandang keruangan.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex gap-4">
+                        <div class="bg-purple-100 text-purple-700 p-3 rounded-xl h-fit">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">5. Evaluasi Latihan</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">Menyelesaikan 5 soal latihan dan mengevaluasi hasil belajar secara mendalam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indikator Keberhasilan Box -->
+            <div class="bg-gradient-to-r from-emerald-900 to-teal-900 text-white rounded-2xl p-6 shadow-md">
+                <h3 class="font-bold text-lg mb-4 flex items-center gap-2 text-emerald-300">
+                    <i data-lucide="flag" class="w-5 h-5"></i> Indikator Keberhasilan Belajar
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                    <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+                        <span class="text-emerald-400 font-bold block mb-1">Indikator A</span>
+                        Peserta didik mampu mengenali dan membedakan 10 konsep geografi tanpa tertukar.
+                    </div>
+                    <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+                        <span class="text-emerald-400 font-bold block mb-1">Indikator B</span>
+                        Peserta didik mampu menghubungkan konsep geografi dengan kasus nyata di Indonesia.
+                    </div>
+                    <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+                        <span class="text-emerald-400 font-bold block mb-1">Indikator C</span>
+                        Peserta didik memperoleh <strong>nilai minimal 80 dari 100</strong> pada latihan evaluasi interaktif.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: KONSEP UTAMA -->
+        <section id="section-materi" class="hidden space-y-8 animate-fade-in">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Bagian Kedua</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">10 Konsep Esensial Geografi</h2>
+                <p class="text-slate-600 text-sm mt-1">
+                    <strong>Konsep Geografi</strong> adalah gagasan utama atau cara pandang untuk memahami, menganalisis, dan menjelaskan fenomena geosfer serta hubungan antargejala di permukaan bumi.
+                </p>
+            </div>
+
+            <!-- Quick Filter / Tab Header -->
+            <div class="flex items-center justify-between flex-wrap gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+                <span class="text-xs font-bold text-slate-500 uppercase tracking-wide">Pilih Konsep:</span>
+                <div class="flex flex-wrap gap-1.5" id="concept-tabs">
+                    <!-- Buttons JS generated -->
+                </div>
+            </div>
+
+            <!-- Interactive Concept Cards Container -->
+            <div id="concept-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Concept Cards will be dynamically rendered via JS -->
+            </div>
+
+            <!-- Table Summary Section -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900">Matriks Ringkasan 10 Konsep Geografi</h3>
+                        <p class="text-xs text-slate-500">Tabel pembanding untuk mempermudah pemahaman ringkas</p>
+                    </div>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold">Rujukan Cepat</span>
+                </div>
+
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100 border-b border-slate-200 text-slate-700">
+                                <th class="p-3 font-bold">No</th>
+                                <th class="p-3 font-bold">Konsep</th>
+                                <th class="p-3 font-bold">Pengertian Ringkas</th>
+                                <th class="p-3 font-bold">Kata Kunci</th>
+                                <th class="p-3 font-bold">Contoh Kontekstual</th>
+                            </tr>
+                        </thead>
+                        <tbody id="summary-table-body" class="divide-y divide-slate-100 text-slate-600">
+                            <!-- Table rows generated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Anti-Confusion Tips Box -->
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-amber-900">
+                <h3 class="font-bold text-base mb-3 flex items-center gap-2 text-amber-800">
+                    <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-600"></i> Tips Penting: Agar Tidak Tertukar!
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+                    <div class="bg-white p-4 rounded-xl border border-amber-200">
+                        <strong class="text-amber-800 block mb-1">Lokasi vs Jarak</strong>
+                        <em>Lokasi</em> menunjuk pada keberadaan posisi/titik (titik koordinat atau letak).<br>
+                        <em>Jarak</em> berfokus pada ruang/rentang yang menghubungkan dua lokasi.
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-amber-200">
+                        <strong class="text-amber-800 block mb-1">Jarak vs Keterjangkauan</strong>
+                        <em>Jarak</em> mengukur seberapa jauh (km / menit).<br>
+                        <em>Keterjangkauan</em> mengukur kemudahan atau rintangan medan (kondisi jalan, sarana).
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-amber-200">
+                        <strong class="text-amber-800 block mb-1">Interaksi vs Keterkaitan Keruangan</strong>
+                        <em>Interaksi</em> menekankan hubungan timbal balik/pertukaran (misal: perdagangan desa-kota).<br>
+                        <em>Keterkaitan Keruangan</em> menekankan hubungan sebab-akibat fenomena di tempat A berdampak pada tempat B.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: CONTOH KASUS NYATA -->
+        <section id="section-kasus" class="hidden space-y-8 animate-fade-in">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Bagian Ketiga</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Studi Kasus Kontekstual Indonesia</h2>
+                <p class="text-slate-600 text-sm mt-1">
+                    Pelajari bagaimana konsep-konsep geografi bekerja pada fenomena nyata di sekitar kita.
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Case 1 -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white p-5 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-amber-400 text-blue-950 px-3 py-1 rounded-full text-xs font-bold">Kasus 1</span>
+                            <h3 class="font-bold text-base sm:text-lg">Banjir di Kawasan Permukiman (Hulu & Hilir)</h3>
+                        </div>
+                        <span class="text-xs bg-white/10 px-3 py-1 rounded-full text-blue-200">Simulasi Kontekstual</span>
+                    </div>
+                    <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <div class="lg:col-span-7 space-y-4">
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                Sebuah kawasan permukiman di daerah hilir sering mengalami banjir luapan setelah terjadi hujan deras di daerah pegunungan (hulu). Alih fungsi lahan hutan di daerah hulu menjadi perkebunan dan permukiman mengurangi resapan air, sehingga debit air permukaan melimpah menuju sungai hulu-hilir dan meluap di drainase hilir yang sempit.
+                            </p>
+                            <!-- Illustration Diagram SVG -->
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                <span class="text-xs font-bold text-slate-500 block mb-2">Diagram Hubungan Hulu - Hilir:</span>
+                                <svg class="w-full h-36 rounded-lg bg-blue-50/50" viewBox="0 0 500 150">
+                                    <!-- Hulu -->
+                                    <path d="M0 150 L120 40 L220 150 Z" fill="#86efac"/>
+                                    <text x="70" y="80" font-size="11" font-weight="bold" fill="#166534">Hulu (Alih Lahan)</text>
+                                    <!-- River -->
+                                    <path d="M120 120 Q 250 130 500 110" stroke="#3b82f6" stroke-width="12" fill="none"/>
+                                    <!-- Hilir Permukiman -->
+                                    <rect x="320" y="70" width="140" height="50" rx="6" fill="#fca5a5" stroke="#ef4444" stroke-width="2"/>
+                                    <text x="330" y="100" font-size="11" font-weight="bold" fill="#991b1b">Hilir (Permukiman Banjir)</text>
+                                    <!-- Rain Icon/Arrows -->
+                                    <path d="M100 20 L100 35 M120 15 L120 30" stroke="#0284c7" stroke-width="3" stroke-dasharray="2 2"/>
+                                    <path d="M180 110 L240 120" stroke="#1d4ed8" stroke-width="3" marker-end="url(#arrow)"/>
+                                </svg>
+                            </div>
+                            <div class="bg-blue-50 border-l-4 border-blue-600 p-3 rounded-r-lg">
+                                <p class="text-xs text-blue-900 font-medium">
+                                    <strong>Pertanyaan Diskusi:</strong> Mengapa perubahan lingkungan di daerah hulu dapat menimbulkan dampak kerugian banjir di kawasan hilir?
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5 flex flex-col justify-between bg-slate-50 p-5 rounded-xl border border-slate-200">
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm mb-2">Bedah Analisis Konsep</h4>
+                                <p class="text-xs text-slate-600 mb-4">Klik tombol di bawah untuk melihat konsep geografi utama yang bekerja pada kasus ini.</p>
+                                <div id="analysis-case-1" class="hidden space-y-2 text-xs">
+                                    <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                                        <strong class="text-blue-700 block">1. Keterkaitan Keruangan</strong>
+                                        Hubungan sebab-akibat alih fungsi lahan hulu menyebabkan limpasan air dan banjir di hilir.
+                                    </div>
+                                    <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                                        <strong class="text-blue-700 block">2. Morfologi</strong>
+                                        Bentuk permukaan bumi (kemiringan lereng hulu vs dataran rendah hilir) memengaruhi laju aliran air.
+                                    </div>
+                                    <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                                        <strong class="text-blue-700 block">3. Interaksi Antarruang</strong>
+                                        Aliran air dan dampak aktivitas manusia menghubungkan dua wilayah berbeda.
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="toggleAnalysis(1)" id="btn-case-1" class="mt-4 w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2">
+                                <i data-lucide="eye" class="w-4 h-4"></i> <span>Lihat Analisis Konsep</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white p-5 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-amber-400 text-blue-950 px-3 py-1 rounded-full text-xs font-bold">Kasus 2</span>
+                            <h3 class="font-bold text-base sm:text-lg">Pola Permukiman Mengikuti Jaringan Jalan Utama</h3>
+                        </div>
+                        <span class="text-xs bg-white/10 px-3 py-1 rounded-full text-blue-200">Simulasi Kontekstual</span>
+                    </div>
+                    <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <div class="lg:col-span-7 space-y-4">
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                Di sepanjang Jalur Pantura Jawa atau jalan penghubung antarkota, bangunan rumah, ruko, toko kelontong, dan bengkel tumbuh pesat berjejer memanjang. Aksesibilitas yang tinggi memudahkan arus transportasi, mobilitas warga, dan peluang ekonomi perdagangan.
+                            </p>
+                            <!-- Illustration SVG -->
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                <span class="text-xs font-bold text-slate-500 block mb-2">Sketsa Peta Permukiman Linear:</span>
+                                <svg class="w-full h-36 rounded-lg bg-amber-50/50" viewBox="0 0 500 150">
+                                    <!-- Road -->
+                                    <line x1="0" y1="75" x2="500" y2="75" stroke="#64748b" stroke-width="28"/>
+                                    <line x1="0" y1="75" x2="500" y2="75" stroke="#f59e0b" stroke-width="2" stroke-dasharray="10 10"/>
+                                    <!-- Houses Top -->
+                                    <rect x="30" y="30" width="30" height="25" fill="#3b82f6" rx="3"/>
+                                    <rect x="80" y="30" width="30" height="25" fill="#3b82f6" rx="3"/>
+                                    <rect x="130" y="30" width="30" height="25" fill="#3b82f6" rx="3"/>
+                                    <rect x="180" y="30" width="30" height="25" fill="#3b82f6" rx="3"/>
+                                    <rect x="230" y="30" width="30" height="25" fill="#3b82f6" rx="3"/>
+                                    <rect x="350" y="30" width="30" height="25" fill="#3b82f6" rx="3"/>
+                                    <!-- Houses Bottom -->
+                                    <rect x="50" y="95" width="30" height="25" fill="#10b981" rx="3"/>
+                                    <rect x="100" y="95" width="30" height="25" fill="#10b981" rx="3"/>
+                                    <rect x="200" y="95" width="30" height="25" fill="#10b981" rx="3"/>
+                                    <rect x="250" y="95" width="30" height="25" fill="#10b981" rx="3"/>
+                                    <rect x="300" y="95" width="30" height="25" fill="#10b981" rx="3"/>
+                                    <rect x="400" y="95" width="30" height="25" fill="#10b981" rx="3"/>
+                                </svg>
+                            </div>
+                            <div class="bg-blue-50 border-l-4 border-blue-600 p-3 rounded-r-lg">
+                                <p class="text-xs text-blue-900 font-medium">
+                                    <strong>Pertanyaan Diskusi:</strong> Mengapa aktivitas ekonomi dan tempat tinggal penduduk cenderung terkonsentrasi di sekitar jalan raya yang ramai?
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5 flex flex-col justify-between bg-slate-50 p-5 rounded-xl border border-slate-200">
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm mb-2">Bedah Analisis Konsep</h4>
+                                <p class="text-xs text-slate-600 mb-4">Klik tombol di bawah untuk melihat konsep geografi utama yang bekerja pada kasus ini.</p>
+                                <div id="analysis-case-2" class="hidden space-y-2 text-xs">
+                                    <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                                        <strong class="text-blue-700 block">1. Konsep Pola</strong>
+                                        Susunan spasial permukiman membentuk pola linier (memanjang) mengikuti jalur jalan.
+                                    </div>
+                                    <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                                        <strong class="text-blue-700 block">2. Keterjangkauan</strong>
+                                        Kemudahan aksesibilitas kendaraan mendorong efisiensi transportasi barang dan penumpang.
+                                    </div>
+                                    <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                                        <strong class="text-blue-700 block">3. Lokasi Relatif & Aglomerasi</strong>
+                                        Posisi strategis di tepi jalan menarik pengelompokan usaha perdagangan (ruko/bengkel).
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="toggleAnalysis(2)" id="btn-case-2" class="mt-4 w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2">
+                                <i data-lucide="eye" class="w-4 h-4"></i> <span>Lihat Analisis Konsep</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white p-5 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-amber-400 text-blue-950 px-3 py-1 rounded-full text-xs font-bold">Kasus 3</span>
+                            <h3 class="font-bold text-base sm:text-lg">Perbedaan Potensi Wilayah Pesisir dan Pegunungan</h3>
+                        </div>
+                        <span class="text-xs bg-white/10 px-3 py-1 rounded-full text-blue-200">Simulasi Kontekstual</span>
+                    </div>
+                    <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <div class="lg:col-span-7 space-y-4">
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                Masyarakat pesisir pantai berprofesi sebagai nelayan dan pembudidaya ikan laut dengan komoditas perikanan dan garam. Sebaliknya, masyarakat daerah dataran tinggi pegunungan mengandalkan komoditas sayuran, buah, dan teh. Kedua wilayah ini saling melakukan pertukaran komoditas harian melalui pasar induk.
+                            </p>
+                            <!-- Illustration SVG Side-by-side -->
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                <span class="text-xs font-bold text-slate-500 block mb-2">Perbandingan Bentang Alam & Potensi:</span>
+                                <div class="grid grid-cols-2 gap-2 text-center text-xs">
+                                    <div class="bg-cyan-50 p-3 rounded-lg border border-cyan-200">
+                                        <div class="font-bold text-cyan-900 mb-1">🌊 Wilayah Pesisir</div>
+                                        <p class="text-slate-600">Dataran rendah pantai, suhu hangat, komoditas ikan/garam/wisata bahari.</p>
+                                    </div>
+                                    <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-200">
+                                        <div class="font-bold text-emerald-900 mb-1">⛰️ Wilayah Pegunungan</div>
+                                        <p class="text-slate-600">Lereng/dataran tinggi, suhu sejuk, komoditas sayur/teh/agrowisata.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-blue-50 border-l-4 border-blue-600 p-3 rounded-r-lg">
+                                <p class="text-xs text-blue-900 font-medium">
+                                    <strong>Pertanyaan Diskusi:</strong> Bagaimana perbedaan potensi fisik dan sumber daya antarwilayah dapat mendorong terbentuknya perdagangan dan kerja sama ekonomi?
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5 flex flex-col justify-between bg-slate-50 p-5 rounded-xl border border-slate-200">
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm mb-2">Bedah Analisis Konsep</h4>
+                                <p class="text-xs text-slate-600 mb-4">Klik tombol di bawah untuk melihat konsep geografi utama yang bekerja pada kasus ini.</p>
+                                <div id="analysis-case-3" class="hidden space-y-2 text-xs">
+                                    <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                                        <strong class="text-blue-700 block">1. Diferensiasi Area</strong>
+                                        Keunikan karakteristik fisik dan hasil alam yang berbeda antara wilayah pesisir dan pegunungan.
+                                    </div>
+                                    <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                                        <strong class="text-blue-700 block">2. Interaksi & Interdependensi</strong>
+                                        Hubungan timbal balik dan saling ketergantungan untuk memenuhi kebutuhan pangan harian.
+                                    </div>
+                                    <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                                        <strong class="text-blue-700 block">3. Nilai Kegunaan</strong>
+                                        Pantai berguna bagi nelayan, sedangkan tanah pegunungan yang subur berguna bagi petani.
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="toggleAnalysis(3)" id="btn-case-3" class="mt-4 w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2">
+                                <i data-lucide="eye" class="w-4 h-4"></i> <span>Lihat Analisis Konsep</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: LATIHAN SOAL INTERAKTIF -->
+        <section id="section-latihan" class="hidden space-y-8 animate-fade-in">
+            <div class="border-b border-slate-200 pb-4 flex items-center justify-between flex-wrap gap-2">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Bagian Keempat</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">5 Soal Latihan Interaktif</h2>
+                    <p class="text-slate-600 text-sm mt-1">Uji pemahaman Anda. Tiap soal berbobot 20 poin (Skor maksimal: 100).</p>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 px-4 py-2 rounded-xl text-xs font-bold text-blue-900">
+                    Target Minimum: <span class="text-emerald-600 font-extrabold">80 Poin</span>
+                </div>
+            </div>
+
+            <!-- Quiz Container -->
+            <div class="space-y-6">
+
+                <!-- Q1: PG Lokasi -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">Soal 1 (Pilihan Ganda)</span>
+                        <span class="text-xs text-slate-400">Bobot: 20 Poin</span>
+                    </div>
+                    <p class="font-semibold text-slate-900 text-sm sm:text-base">
+                        Sebuah SMA Negeri di Sumatra Utara terletak pada koordinat astronomis <code class="bg-slate-100 px-2 py-0.5 rounded text-blue-700 font-mono">3°35' LU dan 98°40' BT</code>. Informasi lokasi tersebut menunjukkan penerapan konsep geografi, yaitu ....
+                    </p>
+                    <div class="space-y-2 text-sm" id="options-q1">
+                        <label class="flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <input type="radio" name="q1" value="A" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                            <span class="ml-3 text-slate-700">A. Lokasi absolut</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <input type="radio" name="q1" value="B" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                            <span class="ml-3 text-slate-700">B. Lokasi relatif</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <input type="radio" name="q1" value="C" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                            <span class="ml-3 text-slate-700">C. Jarak relatif</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <input type="radio" name="q1" value="D" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                            <span class="ml-3 text-slate-700">D. Keterjangkauan</span>
+                        </label>
+                    </div>
+                    <div id="feedback-q1" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+                </div>
+
+                <!-- Q2: PG Jarak -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">Soal 2 (Pilihan Ganda)</span>
+                        <span class="text-xs text-slate-400">Bobot: 20 Poin</span>
+                    </div>
+                    <p class="font-semibold text-slate-900 text-sm sm:text-base">
+                        Dua buah desa terpisah sejauh 8 km. Desa A dapat dicapai dalam waktu 15 menit menggunakan sepeda motor karena jalan mulus, sedangkan Desa B membutuhkan waktu 40 menit akibat jalan berbatu dan berlubang. Perbedaan waktu tempuh tersebut berkaitan dengan konsep ....
+                    </p>
+                    <div class="space-y-2 text-sm" id="options-q2">
+                        <label class="flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <input type="radio" name="q2" value="A" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                            <span class="ml-3 text-slate-700">A. Jarak absolut</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <input type="radio" name="q2" value="B" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                            <span class="ml-3 text-slate-700">B. Jarak relatif</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <input type="radio" name="q2" value="C" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                            <span class="ml-3 text-slate-700">C. Morfologi</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <input type="radio" name="q2" value="D" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                            <span class="ml-3 text-slate-700">D. Diferensiasi area</span>
+                        </label>
+                    </div>
+                    <div id="feedback-q2" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+                </div>
+
+                <!-- Q3: Matching Concept -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold">Soal 3 (Mencocokkan Pasangan)</span>
+                        <span class="text-xs text-slate-400">Bobot: 20 Poin</span>
+                    </div>
+                    <p class="font-semibold text-slate-900 text-sm sm:text-base">
+                        Pilih pasangan konsep geografi yang paling tepat untuk masing-masing fenomena di bawah ini:
+                    </p>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-slate-800 font-medium">1. Permukiman penduduk dibangun memanjang mengikuti aliran sungai.</span>
+                            <select id="match-q3-1" class="bg-white border border-slate-300 rounded-lg p-2 text-xs font-medium text-slate-700 focus:ring-2 focus:ring-blue-500 outline-none">
+                                <option value="">-- Pilih Konsep --</option>
+                                <option value="Pola">Pola</option>
+                                <option value="Aglomerasi">Aglomerasi</option>
+                                <option value="Nilai Kegunaan">Nilai Kegunaan</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-slate-800 font-medium">2. Pabrik-pabrik tekstil dan pergudangan berkumpul di kawasan industri khusus.</span>
+                            <select id="match-q3-2" class="bg-white border border-slate-300 rounded-lg p-2 text-xs font-medium text-slate-700 focus:ring-2 focus:ring-blue-500 outline-none">
+                                <option value="">-- Pilih Konsep --</option>
+                                <option value="Pola">Pola</option>
+                                <option value="Aglomerasi">Aglomerasi</option>
+                                <option value="Nilai Kegunaan">Nilai Kegunaan</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-slate-800 font-medium">3. Pantai indah bernilai tinggi bagi wisatawan, namun bernilai sebagai tempat mencari rezeki bagi nelayan.</span>
+                            <select id="match-q3-3" class="bg-white border border-slate-300 rounded-lg p-2 text-xs font-medium text-slate-700 focus:ring-2 focus:ring-blue-500 outline-none">
+                                <option value="">-- Pilih Konsep --</option>
+                                <option value="Pola">Pola</option>
+                                <option value="Aglomerasi">Aglomerasi</option>
+                                <option value="Nilai Kegunaan">Nilai Kegunaan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="feedback-q3" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+                </div>
+
+                <!-- Q4: Analisis Kasus -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">Soal 4 (Analisis Kasus)</span>
+                        <span class="text-xs text-slate-400">Bobot: 20 Poin</span>
+                    </div>
+                    <p class="font-semibold text-slate-900 text-sm sm:text-base">
+                        Alih fungsi lahan hutan menjadi pemukiman di kawasan hulu sungai memicu banjir bandang di kawasan dataran rendah (hilir). Konsep geografi yang paling langsung menjelaskan hubungan sebab-akibat antarlokasi tersebut adalah ....
+                    </p>
+                    <div class="space-y-2 text-sm" id="options-q4">
+                        <label class="flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <input type="radio" name="q4" value="A" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                            <span class="ml-3 text-slate-700">A. Nilai kegunaan</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <input type="radio" name="q4" value="B" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                            <span class="ml-3 text-slate-700">B. Keterkaitan keruangan</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <input type="radio" name="q4" value="C" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                            <span class="ml-3 text-slate-700">C. Lokasi absolut</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <input type="radio" name="q4" value="D" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                            <span class="ml-3 text-slate-700">D. Pola permukiman</span>
+                        </label>
+                    </div>
+                    <div id="feedback-q4" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+                </div>
+
+                <!-- Q5: HOTS Essay -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-bold">Soal 5 (Penalaran Tingkat Tinggi - HOTS)</span>
+                        <span class="text-xs text-slate-400">Bobot: 20 Poin</span>
+                    </div>
+                    <p class="font-semibold text-slate-900 text-sm sm:text-base leading-relaxed">
+                        Wilayah pegunungan menghasilkan produk sayur-sayuran segar, sedangkan wilayah pesisir menghasilkan komoditas ikan laut. Kedua wilayah ini rutin bertukar hasil produksi melalui jaringan jalan transportasi. <br>
+                        <strong>Sebutkan 2 konsep geografi yang paling relevan untuk menjelaskan fenomena hubungan tersebut dan berikan alasannya secara ringkas!</strong>
+                    </p>
+                    <div>
+                        <textarea id="essay-q5" rows="4" class="w-full p-3 border border-slate-300 rounded-xl text-sm text-slate-800 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Tuliskan jawaban Anda di sini (Contoh: Konsep A karena..., Konsep B karena...)"></textarea>
+                    </div>
+                    <div id="feedback-q5" class="hidden p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-2">
+                        <!-- Rubric & Key display -->
+                    </div>
+                </div>
+
+                <!-- Action Quiz Control Buttons -->
+                <div class="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-slate-200">
+                    <button id="btn-submit-quiz" onclick="checkAnswers()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-8 rounded-xl shadow-lg transition flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i> Periksa Jawaban
+                    </button>
+                    <button id="btn-reset-quiz" onclick="resetQuiz()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold py-3 px-6 rounded-xl transition flex items-center gap-2">
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Ulangi Latihan
+                    </button>
+                </div>
+
+                <!-- Quiz Score Result Card -->
+                <div id="quiz-result-card" class="hidden bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-white rounded-2xl p-6 shadow-xl space-y-4 animate-fade-in">
+                    <div class="flex items-center justify-between flex-wrap gap-4 border-b border-white/10 pb-4">
+                        <div>
+                            <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Hasil Evaluasi Belajar</span>
+                            <h3 class="text-2xl font-bold">Ringkasan Skor Anda</h3>
+                        </div>
+                        <div class="text-right">
+                            <span id="final-score-display" class="text-4xl font-extrabold text-amber-400">0</span>
+                            <span class="text-sm text-blue-200">/ 100</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+                        <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+                            <span class="text-blue-300 font-semibold block mb-1">Status Keberhasilan:</span>
+                            <p id="eval-status-text" class="font-bold text-base"></p>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+                            <span class="text-blue-300 font-semibold block mb-1">Rekomendasi Belajar:</span>
+                            <p id="eval-recommendation-text" class="text-blue-100 leading-relaxed"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 6: RANGKUMAN DAN REFLEKSI -->
+        <section id="section-refleksi" class="hidden space-y-8 animate-fade-in">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-semibold uppercase tracking-wider text-blue-600">Bagian Kelima</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Rangkuman & Lembar Refleksi</h2>
+                <p class="text-slate-600 text-sm mt-1">
+                    Menyimpulkan pembelajaran dan mengaitkannya dengan pengalaman hidup sehari-hari.
+                </p>
+            </div>
+
+            <!-- Key Summary Card -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+                <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
+                    <i data-lucide="bookmark" class="w-5 h-5 text-blue-600"></i> 3 Hal Utama Yang Harus Selalu Diingat
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-200">
+                        <div class="font-bold text-blue-900 mb-1">1. Geografi Adalah Sudut Pandang</div>
+                        <p class="text-slate-600 text-xs leading-relaxed">Geografi bukan sekadar menghafal nama kota/gunung, melainkan cara berpikir spasial (keruangan) terhadap fenomena di bumi.</p>
+                    </div>
+                    <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200">
+                        <div class="font-bold text-emerald-900 mb-1">2. Saling Terkait & Dinamis</div>
+                        <p class="text-slate-600 text-xs leading-relaxed">Fenomena geosfer tidak berdiri sendiri; aspek fisik dan aspek manusia saling memengaruhi (interdependensi & keterkaitan).</p>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-200">
+                        <div class="font-bold text-indigo-900 mb-1">3. Solusi Masalah Nyata</div>
+                        <p class="text-slate-600 text-xs leading-relaxed">Memahami 10 konsep geografi membantu kita memprediksi risiko bencana, tata ruang permukiman, dan pembangunan berkelanjutan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Reflection Form -->
+            <div class="bg-gradient-to-br from-blue-900 to-indigo-950 text-white rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div>
+                    <span class="text-amber-400 text-xs font-bold uppercase tracking-wider">Refleksi Mandiri Peserta Didik</span>
+                    <h3 class="text-xl sm:text-2xl font-bold mt-1">Bagaimana Geografi di Lingkungan Tempat Tinggalmu?</h3>
+                </div>
+
+                <div class="space-y-4">
+                    <label class="block text-sm font-medium text-blue-100">
+                        Pertanyaan Refleksi: <em>"Konsep geografi apa yang paling sering kamu temukan di sekitar rumah/sekolahmu? Jelaskan contoh nyatanya!"</em>
+                    </label>
+                    <textarea id="reflection-input" rows="4" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300 text-sm focus:ring-2 focus:ring-amber-400 outline-none" placeholder="Tuliskan hasil pengamatanmu... (Misal: Di dekat rumahku ada konsep Aglomerasi karena banyak bengkel berkumpul di satu area...)"></textarea>
+                    <button onclick="saveReflection()" class="bg-amber-400 hover:bg-amber-300 text-blue-950 font-bold px-6 py-2.5 rounded-xl text-xs shadow-md transition flex items-center gap-2">
+                        <i data-lucide="save" class="w-4 h-4"></i> Simpan Catatan Refleksi
+                    </button>
+                    <div id="reflection-msg" class="hidden p-3 rounded-xl text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"></div>
+                </div>
+            </div>
+
+            <!-- Call to Action Encouragement -->
+            <div class="text-center bg-slate-100 rounded-2xl p-6 border border-slate-200">
+                <p class="text-slate-700 text-sm font-medium">
+                    🌟 <strong>Mari Amati Sekitarmu!</strong> Geografi ada di setiap jengkal langkahmu. Jadilah pengamat kritis terhadap lingkungan dan bumi tempat kita tinggal.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Sticky Navigation Toolbar -->
+    <div class="bg-white border-t border-slate-200 sticky bottom-0 z-40 py-3 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <button id="btn-prev-page" onclick="navigatePrev()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-4 py-2 rounded-xl text-xs sm:text-sm transition flex items-center gap-1.5">
+                <i data-lucide="chevron-left" class="w-4 h-4"></i> Sebelumnya
+            </button>
+            <span id="current-page-indicator" class="text-xs font-semibold text-slate-500">Halaman 1 dari 5</span>
+            <button id="btn-next-page" onclick="navigateNext()" class="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-4 py-2 rounded-xl text-xs sm:text-sm transition flex items-center gap-1.5 shadow">
+                Berikutnya <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer Information -->
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>© 2026 Media Ajar Digital Geografi SMA Kelas X (Fase E) — Sesuai Kurikulum Merdeka.</p>
+            <p class="text-slate-500">Dirancang secara mandiri, responsif, dan interaktif tanpa ketergantungan API eksternal.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Data & Controller Code -->
+    <script>
+        // 10 Key Geography Concepts Data Array
+        const conceptsData = [
+            {
+                id: 'lokasi',
+                name: 'Lokasi',
+                icon: 'map-pin',
+                def: 'Posisi atau letak suatu objek atau fenomena geografis di permukaan bumi.',
+                keywords: 'Koordinat, Absolut, Relatif, Tata Letak',
+                ex: 'Lokasi absolut Indonesia pada 6° LU - 11° LS dan 95° BT - 141° BT. Lokasi relatif: Indonesia terletak di antara Benua Asia dan Australia.',
+                svg: `<svg class="w-full h-24" viewBox="0 0 200 80"><circle cx="100" cy="40" r="25" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><circle cx="100" cy="40" r="6" fill="#ef4444"/><line x1="100" y1="10" x2="100" y2="70" stroke="#94a3b8" stroke-dasharray="2 2"/><line x1="60" y1="40" x2="140" y2="40" stroke="#94a3b8" stroke-dasharray="2 2"/></svg>`,
+                reflection: 'Coba sebutkan lokasi relatif sekolahmu terhadap fasilitas umum terdekat (pasar, stasiun, atau alun-alun)!'
+            },
+            {
+                id: 'jarak',
+                name: 'Jarak',
+                icon: 'ruler',
+                def: 'Panjang atau ruang yang menghubungkan dua lokasi atau dua objek.',
+                keywords: 'Satuan Panjang (km/m), Waktu Tempuh, Biaya',
+                ex: 'Jarak absolut Jakarta-Bandung adalah 150 km. Jarak relatifnya dapat ditempuh 2,5 jam via tol atau 4 jam via jalan biasa.',
+                svg: `<svg class="w-full h-24" viewBox="0 0 200 80"><circle cx="40" cy="40" r="10" fill="#3b82f6"/><circle cx="160" cy="40" r="10" fill="#10b981"/><path d="M50 40 L150 40" stroke="#64748b" stroke-width="3" stroke-dasharray="4 4"/><text x="90" y="30" font-size="10" fill="#1e293b" font-weight="bold">8 km / 15 menit</text></svg>`,
+                reflection: 'Berapa jarak relatif waktu yang kamu butuhkan dari rumah menuju sekolah di pagi hari?'
+            },
+            {
+                id: 'keterjangkauan',
+                name: 'Keterjangkauan',
+                icon: 'navigation',
+                def: 'Kemudahan atau tingkat aksesibilitas untuk mencapai suatu lokasi berdasarkan kondisi medan dan sarana.',
+                keywords: 'Aksesibilitas, Medan, Jalan, Transportasi, Rintangan',
+                ex: 'Desa di daerah pegunungan tinggi sulit dijangkau karena jalan sempit dan curam, sedangkan kota mudah dijangkau kendaraan.',
+                svg: `<svg class="w-full h-24" viewBox="0 0 200 80"><path d="M20 60 Q70 10 120 60 T180 20" fill="none" stroke="#f59e0b" stroke-width="4"/><text x="70" y="75" font-size="10" fill="#b45309" font-weight="bold">Akses Jalan Ringan vs Sulit</text></svg>`,
+                reflection: 'Apakah ada wilayah di daerahmu yang sulit dijangkau saat musim hujan? Mengapa?'
+            },
+            {
+                id: 'pola',
+                name: 'Pola',
+                icon: 'layout-grid',
+                def: 'Bentuk, susunan, atau persebaran fenomena alami maupun buatan di permukaan bumi.',
+                keywords: 'Susunan, Memanjang (Linier), Menyebar, Mengelompok',
+                ex: 'Permukiman penduduk di sepanjang aliran sungai membentuk pola memanjang (linier).',
+                svg: `<svg class="w-full h-24" viewBox="0 0 200 80"><line x1="20" y1="40" x2="180" y2="40" stroke="#0284c7" stroke-width="6"/><circle cx="40" cy="25" r="5" fill="#e11d48"/><circle cx="80" cy="25" r="5" fill="#e11d48"/><circle cx="120" cy="25" r="5" fill="#e11d48"/><circle cx="160" cy="25" r="5" fill="#e11d48"/><circle cx="60" cy="55" r="5" fill="#e11d48"/><circle cx="100" cy="55" r="5" fill="#e11d48"/><circle cx="140" cy="55" r="5" fill="#e11d48"/></svg>`,
+                reflection: 'Bagaimana pola susunan rumah di permukiman tempat tinggalmu?'
+            },
+            {
+                id: 'morfologi',
+                name: 'Morfologi',
+                icon: 'mountain',
+                def: 'Bentuk bentang alam permukaan bumi sebagai hasil dari proses endogen dan eksogen.',
+                keywords: 'Relief, Dataran, Pegunungan, Lereng, Lembah',
+                ex: 'Dataran rendah dimanfaatkan untuk pemukiman dan persawahan, sedangkan pegunungan dimanfaatkan untuk perkebunan teh.',
+                svg: `<svg class="w-full h-24" viewBox="0 0 200 80"><path d="M0 70 L60 20 L110 50 L160 10 L200 70 Z" fill="#86efac" stroke="#166534" stroke-width="2"/></svg>`,
+                reflection: 'Sebutkan bentuk relief permukaan bumi (morfologi) di sekitar daerah kabupaten/kotamu!'
+            },
+            {
+                id: 'aglomerasi',
+                name: 'Aglomerasi',
+                icon: 'boxes',
+                def: 'Kecenderungan pemusatan atau pengelompokan suatu aktivitas atau fenomena di wilayah tertentu.',
+                keywords: 'Pemusatan, Pengelompokan, Kawasan Industri, Permukiman Elit',
+                ex: 'Pemusatan kawasan industri tekstil di Cikarang atau kelompok pedagang kain di Pasar Tanah Abang.',
+                svg: `<svg class="w-full h-24" viewBox="0 0 200 80"><rect x="110" y="20" width="20" height="20" fill="#6366f1"/><rect x="135" y="20" width="20" height="20" fill="#6366f1"/><rect x="110" y="45" width="20" height="20" fill="#6366f1"/><rect x="135" y="45" width="20" height="20" fill="#6366f1"/><circle cx="140" cy="42" r="35" fill="none" stroke="#4338ca" stroke-dasharray="3 3"/></svg>`,
+                reflection: 'Apakah ada pusat/kelompok pertokoan atau industri tertentu di kotamu?'
+            },
+            {
+                id: 'nilaikegunaan',
+                name: 'Nilai Kegunaan',
+                icon: 'sparkles',
+                def: 'Kelebihan atau manfaat relatif yang dimiliki suatu wilayah bagi kelompok masyarakat yang berbeda.',
+                keywords: 'Manfaat, Potensi, Fungsi, Kegunaan Berbeda',
+                ex: 'Kawasan pantai bagi nelayan berguna sebagai tempat mencari ikan, sedangkan bagi wisatawan berguna sebagai tempat rekreasi.',
+                svg: `<svg class="w-full h-24" viewBox="0 0 200 80"><path d="M10 60 Q 50 40 100 60 T 190 60" fill="none" stroke="#06b6d4" stroke-width="3"/><circle cx="60" cy="35" r="8" fill="#f59e0b"/><text x="100" y="30" font-size="9" fill="#0e7490" font-weight="bold">Wisata vs Perikanan</text></svg>`,
+                reflection: 'Apa nilai kegunaan utama taman kota atau lapangan dekat rumahmu?'
+            },
+            {
+                id: 'interaksi',
+                name: 'Interaksi & Interdependensi',
+                icon: 'arrows-up-down',
+                def: 'Hubungan timbal balik dan saling ketergantungan antarwilayah yang saling memengaruhi.',
+                keywords: 'Timbal Balik, Saling Ketergantungan, Aliran Barang/Jasa',
+                ex: 'Desa menghasilkan bahan pangan untuk kota, sementara kota menyediakan hasil manufaktur dan mesin pertanian untuk desa.',
+                svg: `<svg class="w-full h-24" viewBox="0 0 200 80"><rect x="20" y="25" width="40" height="30" rx="4" fill="#10b981"/><rect x="140" y="25" width="40" height="30" rx="4" fill="#3b82f6"/><path d="M65 33 L135 33" stroke="#10b981" stroke-width="2" marker-end="url(#arrow)"/><path d="M135 47 L65 47" stroke="#3b82f6" stroke-width="2"/></svg>`,
+                reflection: 'Produk harian apa di rumahmu yang didatangkan dari wilayah/daerah lain?'
+            },
+            {
+                id: 'diferensiasi',
+                name: 'Diferensiasi Area',
+                icon: 'layers',
+                def: 'Karakteristik unik atau perbedaan khas yang dimiliki oleh suatu wilayah dibandingkan wilayah lain.',
+                keywords: 'Ciri Khas, Unik, Perbedaan Wilayah, Karakter fisik',
+                ex: 'Masyarakat pesisir mayoritas berumah panggung atau bermata pencaharian laut, berbedadengan wilayah perkotaan.',
+                svg: `<svg class="w-full h-24" viewBox="0 0 200 80"><rect x="20" y="15" width="70" height="50" rx="6" fill="#ecfeff" stroke="#06b6d4"/><rect x="110" y="15" width="70" height="50" rx="6" fill="#f0fdf4" stroke="#16a34a"/><text x="35" y="45" font-size="10" fill="#0891b2" font-weight="bold">Pesisir</text><text x="120" y="45" font-size="10" fill="#15803d" font-weight="bold">Pegunungan</text></svg>`,
+                reflection: 'Apa keunikan utama daerahmu yang tidak dimiliki oleh daerah tetangga?'
+            },
+            {
+                id: 'keterkaitan',
+                name: 'Keterkaitan Keruangan',
+                icon: 'network',
+                def: 'Tingkat keterikatan antara fenomena geografis di satu tempat dengan tempat lainnya (sebab-akibat).',
+                keywords: 'Sebab-Akibat, Dampak Keruangan, Aliran Dampak',
+                ex: 'Kebakaran hutan di Riau menyebabkan asap tebal yang mencemari udara hingga Singapura dan Malaysia.',
+                svg: `<svg class="w-full h-24" viewBox="0 0 200 80"><circle cx="50" cy="40" r="20" fill="#fca5a5" stroke="#ef4444"/><circle cx="150" cy="40" r="20" fill="#fed7aa" stroke="#f97316"/><path d="M72 40 L128 40" stroke="#dc2626" stroke-width="3" stroke-dasharray="3 3"/></svg>`,
+                reflection: 'Bagaimana perubahan penggunaan lahan di sekitarmu memengaruhi saluran air saat hujan?'
+            }
+        ];
+
+        const pages = ['home', 'tujuan', 'materi', 'kasus', 'latihan', 'refleksi'];
+        let currentPageIndex = 0;
+        let quizSubmitted = false;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderConceptTabs();
+            renderConceptCards('all');
+            renderSummaryTable();
+            lucide.createIcons();
+            updateNavigationUI();
+        });
+
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function navigateTo(pageId) {
+            const index = pages.indexOf(pageId);
+            if (index !== -1) {
+                currentPageIndex = index;
+                showSection(pageId);
+                updateNavigationUI();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function navigateNext() {
+            if (currentPageIndex < pages.length - 1) {
+                currentPageIndex++;
+                showSection(pages[currentPageIndex]);
+                updateNavigationUI();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function navigatePrev() {
+            if (currentPageIndex > 0) {
+                currentPageIndex--;
+                showSection(pages[currentPageIndex]);
+                updateNavigationUI();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function showSection(pageId) {
+            pages.forEach(id => {
+                const sec = document.getElementById(`section-${id}`);
+                if (sec) sec.classList.add('hidden');
+            });
+            const activeSec = document.getElementById(`section-${pageId}`);
+            if (activeSec) activeSec.classList.remove('hidden');
+
+            // Update Nav buttons styling
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-white/20', 'text-amber-300', 'font-bold');
+            });
+            const activeNav = document.getElementById(`nav-${pageId}`);
+            if (activeNav) activeNav.classList.add('bg-white/20', 'text-amber-300', 'font-bold');
+        }
+
+        function updateNavigationUI() {
+            // Update Progress Bar %
+            const progress = Math.round((currentPageIndex / (pages.length - 1)) * 100);
+            document.getElementById('progress-text').innerText = `${progress}%`;
+
+            // Update Indicator
+            document.getElementById('current-page-indicator').innerText = `Halaman ${currentPageIndex + 1} dari ${pages.length}`;
+
+            // Prev/Next Button state
+            const prevBtn = document.getElementById('btn-prev-page');
+            const nextBtn = document.getElementById('btn-next-page');
+
+            prevBtn.disabled = currentPageIndex === 0;
+            prevBtn.style.opacity = currentPageIndex === 0 ? '0.5' : '1';
+
+            nextBtn.disabled = currentPageIndex === pages.length - 1;
+            nextBtn.style.opacity = currentPageIndex === pages.length - 1 ? '0.5' : '1';
+        }
+
+        function renderConceptTabs() {
+            const container = document.getElementById('concept-tabs');
+            container.innerHTML = `<button onclick="filterConcepts('all')" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-blue-700 text-white">Semua</button>`;
+            conceptsData.forEach(c => {
+                container.innerHTML += `<button onclick="filterConcepts('${c.id}')" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 transition">${c.name}</button>`;
+            });
+        }
+
+        function filterConcepts(conceptId) {
+            renderConceptCards(conceptId);
+        }
+
+        function renderConceptCards(filterId) {
+            const container = document.getElementById('concept-cards-container');
+            container.innerHTML = '';
+
+            const list = filterId === 'all' ? conceptsData : conceptsData.filter(c => c.id === filterId);
+
+            list.forEach((c, idx) => {
+                const cardHTML = `
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition flex flex-col justify-between">
+                    <div class="p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full text-xs font-bold">Konsep ${idx + 1}</span>
+                            <div class="text-blue-600"><i data-lucide="${c.icon}" class="w-5 h-5"></i></div>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900">${c.name}</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">${c.def}</p>
+                        
+                        <div class="bg-slate-50 p-2.5 rounded-xl text-xs space-y-1 border border-slate-100">
+                            <span class="font-bold text-slate-700 block">Kata Kunci:</span>
+                            <span class="text-blue-700 font-medium">${c.keywords}</span>
+                        </div>
+
+                        <!-- SVG Illustration -->
+                        <div class="bg-slate-50/80 rounded-xl p-2 border border-slate-200/60 flex items-center justify-center">
+                            ${c.svg}
+                        </div>
+
+                        <div class="text-xs text-slate-700 bg-amber-50/60 border border-amber-100 p-3 rounded-xl">
+                            <strong class="text-amber-900 block mb-1">Contoh Nyata:</strong>
+                            ${c.ex}
+                        </div>
+                    </div>
+
+                    <!-- Interactive Reflection Footer -->
+                    <div class="p-4 bg-slate-50 border-t border-slate-100">
+                        <button onclick="toggleCardReflection('${c.id}')" class="w-full text-left text-xs font-semibold text-blue-700 hover:text-blue-800 flex items-center justify-between">
+                            <span><i data-lucide="help-circle" class="w-3.5 h-3.5 inline mr-1"></i> Pertanyaan Refleksi Ringkas</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </button>
+                        <div id="ref-box-${c.id}" class="hidden mt-2 p-2.5 bg-white rounded-lg border border-slate-200 text-xs text-slate-600 leading-relaxed">
+                            ${c.reflection}
+                        </div>
+                    </div>
+                </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+            lucide.createIcons();
+        }
+
+        function toggleCardReflection(id) {
+            const box = document.getElementById(`ref-box-${id}`);
+            box.classList.toggle('hidden');
+        }
+
+        function renderSummaryTable() {
+            const tbody = document.getElementById('summary-table-body');
+            tbody.innerHTML = '';
+            conceptsData.forEach((c, i) => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="p-3 font-bold text-slate-800">${i + 1}</td>
+                        <td class="p-3 font-semibold text-blue-900">${c.name}</td>
+                        <td class="p-3">${c.def}</td>
+                        <td class="p-3 font-medium text-emerald-700">${c.keywords}</td>
+                        <td class="p-3 text-slate-600">${c.ex}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        function toggleAnalysis(caseNum) {
+            const el = document.getElementById(`analysis-case-${caseNum}`);
+            const btn = document.getElementById(`btn-case-${caseNum}`);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                btn.innerHTML = `<i data-lucide="eye-off" class="w-4 h-4"></i> <span>Sembunyikan Analisis</span>`;
+            } else {
+                el.classList.add('hidden');
+                btn.innerHTML = `<i data-lucide="eye" class="w-4 h-4"></i> <span>Lihat Analisis Konsep</span>`;
+            }
+            lucide.createIcons();
+        }
+
+        function checkAnswers() {
+            if (quizSubmitted) {
+                alert('Anda telah mengirimkan jawaban. Klik "Ulangi Latihan" jika ingin mencoba kembali.');
+                return;
+            }
+
+            let score = 0;
+
+            // Q1 Validation (PG Lokasi - Answer: A)
+            const q1Val = document.querySelector('input[name="q1"]:checked')?.value;
+            const fb1 = document.getElementById('feedback-q1');
+            fb1.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-900', 'bg-red-100', 'text-red-900');
+            if (q1Val === 'A') {
+                score += 20;
+                fb1.classList.add('bg-emerald-100', 'text-emerald-900');
+                fb1.innerHTML = '<strong>Benar! (+20 Poin)</strong> Koordinat lintang dan bujur (3°35\' LU & 98°40\' BT) adalah angka pasti yang menunjukkan <em>Lokasi Absolut</em>.';
+            } else {
+                fb1.classList.add('bg-red-100', 'text-red-900');
+                fb1.innerHTML = '<strong>Kurang Tepat (0 Poin).</strong> Kunci Jawaban: <strong>A. Lokasi absolut</strong>. Alasan: Koordinat garis astronomis bersifat tetap dan mutlak.';
+            }
+
+            // Q2 Validation (PG Jarak - Answer: B)
+            const q2Val = document.querySelector('input[name="q2"]:checked')?.value;
+            const fb2 = document.getElementById('feedback-q2');
+            fb2.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-900', 'bg-red-100', 'text-red-900');
+            if (q2Val === 'B') {
+                score += 20;
+                fb2.classList.add('bg-emerald-100', 'text-emerald-900');
+                fb2.innerHTML = '<strong>Benar! (+20 Poin)</strong> Perbedaan waktu tempuh (15 menit vs 40 menit) meskipun jarak fisik sama (8 km) adalah konsep <em>Jarak Relatif</em>.';
+            } else {
+                fb2.classList.add('bg-red-100', 'text-red-900');
+                fb2.innerHTML = '<strong>Kurang Tepat (0 Poin).</strong> Kunci Jawaban: <strong>B. Jarak relatif</strong>. Alasan: Jarak relatif mengukur ruang berdasarkan satuan waktu tempuh atau biaya.';
+            }
+
+            // Q3 Validation (Matching)
+            const m1 = document.getElementById('match-q3-1').value;
+            const m2 = document.getElementById('match-q3-2').value;
+            const m3 = document.getElementById('match-q3-3').value;
+            const fb3 = document.getElementById('feedback-q3');
+            fb3.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-900', 'bg-red-100', 'text-red-900');
+
+            let q3Correct = 0;
+            if (m1 === 'Pola') q3Correct++;
+            if (m2 === 'Aglomerasi') q3Correct++;
+            if (m3 === 'Nilai Kegunaan') q3Correct++;
+
+            const q3Score = Math.round((q3Correct / 3) * 20);
+            score += q3Score;
+
+            if (q3Correct === 3) {
+                fb3.classList.add('bg-emerald-100', 'text-emerald-900');
+                fb3.innerHTML = '<strong>Benar Sempurna! (+20 Poin)</strong> Seluruh Pasangan Tepat: <br>1. Sungai → Pola <br>2. Kawasan Industri → Aglomerasi <br>3. Manfaat Pantai → Nilai Kegunaan.';
+            } else {
+                fb3.classList.add('bg-red-100', 'text-red-900');
+                fb3.innerHTML = `<strong>Skor Parsial (+${q3Score} Poin).</strong> Kunci Pasangan Benar: <br>1. Permukiman sungai → <strong>Pola</strong> <br>2. Industri mengelompok → <strong>Aglomerasi</strong> <br>3. Manfaat pantai → <strong>Nilai Kegunaan</strong>.`;
+            }
+
+            // Q4 Validation (PG Analisis Kasus - Answer: B)
+            const q4Val = document.querySelector('input[name="q4"]:checked')?.value;
+            const fb4 = document.getElementById('feedback-q4');
+            fb4.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-900', 'bg-red-100', 'text-red-900');
+            if (q4Val === 'B') {
+                score += 20;
+                fb4.classList.add('bg-emerald-100', 'text-emerald-900');
+                fb4.innerHTML = '<strong>Benar! (+20 Poin)</strong> Keterkaitan Keruangan menjelaskan fenomena di daerah hulu (alih fungsi lahan) menyebabkan dampak banjir di daerah hilir.';
+            } else {
+                fb4.classList.add('bg-red-100', 'text-red-900');
+                fb4.innerHTML = '<strong>Kurang Tepat (0 Poin).</strong> Kunci Jawaban: <strong>B. Keterkaitan keruangan</strong>.';
+            }
+
+            // Q5 Validation (HOTS Essay Auto-Keyword Assessment)
+            const essayText = document.getElementById('essay-q5').value.toLowerCase().trim();
+            const fb5 = document.getElementById('feedback-q5');
+            fb5.classList.remove('hidden');
+
+            let q5Score = 0;
+            const kwDiferensiasi = essayText.includes('diferensiasi') || essayText.includes('beda') || essayText.includes('perbedaan');
+            const kwInteraksi = essayText.includes('interaksi') || essayText.includes('interdependensi') || essayText.includes('timbal balik') || essayText.includes('tukar') || essayText.includes('ketergantungan');
+
+            if (kwDiferensiasi && kwInteraksi) {
+                q5Score = 20;
+            } else if (kwDiferensiasi || kwInteraksi) {
+                q5Score = 10;
+            } else if (essayText.length > 10) {
+                q5Score = 5; // Minimal attempt
+            } else {
+                q5Score = 0;
+            }
+            score += q5Score;
+
+            fb5.innerHTML = `
+                <div class="font-bold text-slate-800">Umpan Balik Soal HOTS (Skor Diperoleh: ${q5Score}/20 Poin):</div>
+                <div class="text-slate-600 leading-relaxed">
+                    <strong>Rubrik Jawaban Ideal:</strong><br>
+                    1. <strong>Diferensiasi Area:</strong> Pegunungan dan pesisir memiliki karakteristik fisik serta potensi komoditas yang berbeda.<br>
+                    2. <strong>Interaksi & Interdependensi:</strong> Perbedaan potensi memicu hubungan pertukaran komoditas dan saling ketergantungan antarwilayah.
+                </div>
+            `;
+
+            // Display Final Results Card
+            quizSubmitted = true;
+            document.getElementById('btn-submit-quiz').disabled = true;
+            document.getElementById('btn-submit-quiz').classList.add('opacity-50', 'cursor-not-allowed');
+
+            const resultCard = document.getElementById('quiz-result-card');
+            resultCard.classList.remove('hidden');
+            document.getElementById('final-score-display').innerText = score;
+
+            const statusText = document.getElementById('eval-status-text');
+            const recText = document.getElementById('eval-recommendation-text');
+
+            if (score >= 80) {
+                statusText.className = 'font-bold text-base text-emerald-400';
+                statusText.innerText = '🎉 TUNTAS (Sangat Baik)';
+                recText.innerText = 'Selamat! Anda telah menguasai 10 konsep esensial geografi dengan sangat baik di atas kriteria ketuntasan minimum (80).';
+            } else {
+                statusText.className = 'font-bold text-base text-amber-400';
+                statusText.innerText = '⚠️ PERLU REMEDIAL / REVISI';
+                recText.innerText = 'Skor Anda belum mencapai kriteria minimum (80). Silakan tinjau kembali bagian "10 Konsep" dan "Studi Kasus", lalu tekan tombol "Ulangi Latihan".';
+            }
+
+            resultCard.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            quizSubmitted = false;
+            document.getElementById('btn-submit-quiz').disabled = false;
+            document.getElementById('btn-submit-quiz').classList.remove('opacity-50', 'cursor-not-allowed');
+
+            // Reset inputs
+            document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+            document.getElementById('match-q3-1').value = '';
+            document.getElementById('match-q3-2').value = '';
+            document.getElementById('match-q3-3').value = '';
+            document.getElementById('essay-q5').value = '';
+
+            // Hide feedbacks & result
+            ['feedback-q1', 'feedback-q2', 'feedback-q3', 'feedback-q4', 'feedback-q5', 'quiz-result-card'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+
+            window.scrollTo({ top: document.getElementById('section-latihan').offsetTop - 80, behavior: 'smooth' });
+        }
+
+        function saveReflection() {
+            const input = document.getElementById('reflection-input').value.trim();
+            const msg = document.getElementById('reflection-msg');
+            if (input.length < 5) {
+                alert('Tuliskan refleksi singkat Anda terlebih dahulu.');
+                return;
+            }
+            msg.classList.remove('hidden');
+            msg.innerText = '✓ Catatan refleksi Anda telah tersimpan di sesi belajar ini! Tetap semangat mengamati fenomena di sekitarmu.';
+        }
+    </script>
+</body>
+</html>
